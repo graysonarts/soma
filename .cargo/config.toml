@@ -1,8 +1,17 @@
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "probe-rs run --chip RP2040"
-
 [build]
-target = "thumbv6m-none-eabi"        # Cortex-M0 and Cortex-M0+
+target = "thumbv6m-none-eabi"
+
+[target.thumbv6m-none-eabi]
+# runner = "probe-rs run --chip RP2040"  # "elf2uf2-rs -d"
+runner = "elf2uf2-rs --deploy --serial --verbose" # Without Probe
+rustflags = [
+    "-C", "link-arg=--nmagic",
+    "-C", "link-arg=-Tlink.x",
+    "-C", "link-arg=-Tlink-rp.x",
+    "-C", "link-arg=-Tdefmt.x",
+    "-C", "linker=flip-link",
+    "-C", "no-vectorize-loops",
+]
 
 [env]
-DEFMT_LOG = "debug"
+DEFMT_LOG = "trace"
