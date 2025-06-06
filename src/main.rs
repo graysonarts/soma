@@ -51,6 +51,7 @@ async fn button_task(
 }
 
 #[embassy_executor::task]
+#[allow(unreachable_patterns)]
 async fn led_task(
     mut leds: [gpio::Output<'static>; BUTTON_COUNT],
     receiver: Receiver<'static, ThreadModeRawMutex, ButtonId, CHANNEL_SIZE>,
@@ -58,9 +59,10 @@ async fn led_task(
     loop {
         let button_id = receiver.receive().await;
         for i in 0..BUTTON_COUNT {
-            match i {
-                button_id => leds[i].set_low(),
-                _ => leds[i].set_high(),
+            if i == button_id as usize {
+                leds[i].set_low();
+            } else {
+                leds[i].set_high();
             }
         }
     }
@@ -81,6 +83,24 @@ macro_rules! led {
 macro_rules! audio_out {
     ($pin:expr) => {
         gpio::Output::new($pin, Level::High)
+    };
+}
+
+macro_rules! route_audio {
+    ($pins:expr, $button_id:expr) => {
+        let a = [
+            $button_id & 0b1,
+            $button_id & 0b10,
+            $button_id & 0b100,
+            $button_id & 0b1000,
+        ];
+        $pins.iter_mut().enumerate().for_each(|(i, pin)| {
+            if a[i] == 1 {
+                pin.set_high();
+            } else {
+                pin.set_low();
+            }
+        });
     };
 }
 
@@ -126,7 +146,7 @@ async fn main(spawner: Spawner) {
     spawner.spawn(led_task(leds, CHANNEL.receiver())).unwrap();
 
     info!("Initializing audio control");
-    let audio_controls = [
+    let mut audio_controls = [
         audio_out!(p.PIN_12),
         audio_out!(p.PIN_13),
         audio_out!(p.PIN_14),
@@ -137,6 +157,6 @@ async fn main(spawner: Spawner) {
         let button_id = CHANNEL.receive().await;
         info!("Button pressed: {}", button_id);
 
-        // TODO: Handle the audio switching
+        route_audio!(audio_controls, button_id + 1);
     }
 }
