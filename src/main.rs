@@ -128,6 +128,10 @@ async fn main(spawner: Spawner) {
             .unwrap();
     });
 
+    // TODO: Convert button and leds to I2C control
+    // GPIO4 = SDA
+    // GPIO5 = SCL
+
     info!("Initializing leds");
     let leds = [
         led!(p.PIN_0),
