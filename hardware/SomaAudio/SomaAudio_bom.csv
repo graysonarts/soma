@@ -1,4 +1,6 @@
 "Refs","Value","Footprint","Qty","DNP"
+"C1","0.1 uF","Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal","1",""
+"C2","0.1 uF","Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal","1",""
 "CN1","0.1uF","Package_SIP:SIP-9_21.54x3mm_P2.54mm","1",""
 "CN2","0.1uF","Package_SIP:SIP-9_21.54x3mm_P2.54mm","1",""
 "IC1","DG406DJ","CustomParts:DG407","1",""

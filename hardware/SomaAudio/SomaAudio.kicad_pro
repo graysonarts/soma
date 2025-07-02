@@ -518,6 +518,10 @@
       {
         "netclass": "AUDIO",
         "pattern": "GND"
+      },
+      {
+        "netclass": "AUDIO",
+        "pattern": "V*"
       }
     ]
   },
