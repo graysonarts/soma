@@ -1,0 +1,13 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"C2,C1";"C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal";2;"0.1 uF";;;
+2;"IC1";"DG407";1;"DG406DJ";;;
+3;"J6";"TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal";1;"Audio IN 2";;;
+4;"R3,R2";"R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal";2;"4.7K";;;
+5;"J17";"JST_EH_S4B-EH_1x04_P2.50mm_Horizontal";1;"I2C";;;
+6;"J5";"TerminalBlock_Phoenix_MPT-0,5-8-2.54_1x08_P2.54mm_Horizontal";1;"Audio IN 1";;;
+7;"R1";"R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal";1;"0 OHM";;;
+8;"J2";"TerminalBlock_Phoenix_MPT-0,5-12-2.54_1x12_P2.54mm_Horizontal";1;"Audio GND +";;;
+9;"J4";"TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal";1;"VIN";;;
+10;"J3";"TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal";1;"Audio Out";;;
+11;"U1";"DIP-28_W7.62mm";1;"MCP23017_SP";;;
+12;"CN2,CN1";"SIP-9_21.54x3mm_P2.54mm";2;"0.1uF";;;
